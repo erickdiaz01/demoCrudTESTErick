@@ -4,11 +4,11 @@ import com.crud.democrud.models.UserRol;
 import com.crud.democrud.models.UsuarioModel;
 import com.crud.democrud.repositories.RolRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
-
+@Service
 public class RolServices {
     @Autowired
     private RolRepository rolRepository;
@@ -18,8 +18,8 @@ public class RolServices {
         return (UserRol) rolRepository.save(rol);
     }
 
-    public List<UserRol> listaRol(){
-        return (List<UserRol>) this.rolRepository.findAll();
+    public ArrayList<UserRol> listaRol(){
+        return (ArrayList<UserRol>) this.rolRepository.findAll();
     }
 
     public Optional<UserRol> obtenerPorId(Long id){
