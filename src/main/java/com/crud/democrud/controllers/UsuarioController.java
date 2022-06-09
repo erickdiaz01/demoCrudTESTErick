@@ -36,13 +36,20 @@ public class UsuarioController {
     }
 
     @DeleteMapping(path = "/{id}")
-    public String eliminarPorId(@PathVariable("id") Long id) {
+    public String eliminarPorId(@PathVariable("id") Long id,@RequestBody UsuarioModel usuario) {
         boolean ok = this.usuarioService.eliminarUsuario(id);
         if (ok) {
             return "Se eliminó el usuario con id " + id;
         } else {
             return "No pudo eliminar el usuario con id" + id;
         }
+    }
+
+    @PutMapping(path = "/update/{id}")
+    public UsuarioModel actualizarUsuario(@PathVariable("id")Long id,@RequestBody UsuarioModel usuario){
+
+            return this.usuarioService.actualizarUsuario(id,usuario);
+
     }
 
 }
